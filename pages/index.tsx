@@ -227,6 +227,33 @@ const Home: React.FC<HomeProps> = ({
           }
         }
 
+        // debugger;
+        // const req = JSON.parse(text);
+
+        // const res = await fetch(req.url, {
+        //   method: req.method,
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: req.body ? JSON.stringify(req.body) : null,
+        // });
+
+        // const b7_response = await res.json();
+
+        // console.log('b7_response ', b7_response);
+
+        // const updatedMessages: Message[] = [
+        //   ...updatedConversation.messages,
+        //   { role: 'assistant', content: JSON.stringify(b7_response?.data) },
+        // ];
+
+        // updatedConversation = {
+        //   ...updatedConversation,
+        //   messages: updatedMessages,
+        // };
+
+        // setSelectedConversation(updatedConversation);
+
         saveConversation(updatedConversation);
 
         const updatedConversations: Conversation[] = conversations.map(

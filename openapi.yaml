@@ -1,0 +1,2329 @@
+openapi: 3.0.1
+info:
+  title: Swagger B7 Ide
+  description: ''
+  contact:
+    email: veli@betastack.ai
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: '1.0'
+servers:
+  - url: http://localhost:5124/api/00001337-b37a-4ae2-a221-2470b63db374
+tags: []
+paths:
+  /table/b7_enum:
+    get:
+      summary: List of B7Enum
+      description: returns list of B7Enum records. Filtering, paging is optional
+      operationId: listB7Enum
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7Enum
+      operationId: addB7Enum
+      requestBody:
+        description: B7Enum Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Enum_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Enum_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Enum created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_enum/{id}:
+    put:
+      summary: Update B7Enum by ID
+      operationId: updateB7Enum
+      requestBody:
+        description: B7Enum Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Enum_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Enum_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Enum updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7Enum by ID
+      operationId: deleteB7Enum
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7Enum
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7Enum deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_query_param:
+    get:
+      summary: List of B7QueryParam
+      description: returns list of B7QueryParam records. Filtering, paging is optional
+      operationId: listB7QueryParam
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7QueryParam
+      operationId: addB7QueryParam
+      requestBody:
+        description: B7QueryParam Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7QueryParam_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7QueryParam_Crud'
+        required: true
+      responses:
+        200:
+          description: B7QueryParam created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_query_param/{id}:
+    put:
+      summary: Update B7QueryParam by ID
+      operationId: updateB7QueryParam
+      requestBody:
+        description: B7QueryParam Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7QueryParam_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7QueryParam_Crud'
+        required: true
+      responses:
+        200:
+          description: B7QueryParam updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7QueryParam by ID
+      operationId: deleteB7QueryParam
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7QueryParam
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7QueryParam deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_query_field:
+    get:
+      summary: List of B7QueryField
+      description: returns list of B7QueryField records. Filtering, paging is optional
+      operationId: listB7QueryField
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7QueryField
+      operationId: addB7QueryField
+      requestBody:
+        description: B7QueryField Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7QueryField_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7QueryField_Crud'
+        required: true
+      responses:
+        200:
+          description: B7QueryField created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_query_field/{id}:
+    put:
+      summary: Update B7QueryField by ID
+      operationId: updateB7QueryField
+      requestBody:
+        description: B7QueryField Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7QueryField_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7QueryField_Crud'
+        required: true
+      responses:
+        200:
+          description: B7QueryField updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7QueryField by ID
+      operationId: deleteB7QueryField
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7QueryField
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7QueryField deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_func_param:
+    get:
+      summary: List of B7FuncParam
+      description: returns list of B7FuncParam records. Filtering, paging is optional
+      operationId: listB7FuncParam
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7FuncParam
+      operationId: addB7FuncParam
+      requestBody:
+        description: B7FuncParam Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7FuncParam_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7FuncParam_Crud'
+        required: true
+      responses:
+        200:
+          description: B7FuncParam created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_func_param/{id}:
+    put:
+      summary: Update B7FuncParam by ID
+      operationId: updateB7FuncParam
+      requestBody:
+        description: B7FuncParam Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7FuncParam_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7FuncParam_Crud'
+        required: true
+      responses:
+        200:
+          description: B7FuncParam updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7FuncParam by ID
+      operationId: deleteB7FuncParam
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7FuncParam
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7FuncParam deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_func:
+    get:
+      summary: List of B7Func
+      description: returns list of B7Func records. Filtering, paging is optional
+      operationId: listB7Func
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7Func
+      operationId: addB7Func
+      requestBody:
+        description: B7Func Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Func_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Func_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Func created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_func/{id}:
+    put:
+      summary: Update B7Func by ID
+      operationId: updateB7Func
+      requestBody:
+        description: B7Func Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Func_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Func_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Func updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7Func by ID
+      operationId: deleteB7Func
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7Func
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7Func deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_enum_item:
+    get:
+      summary: List of B7EnumItem
+      description: returns list of B7EnumItem records. Filtering, paging is optional
+      operationId: listB7EnumItem
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7EnumItem
+      operationId: addB7EnumItem
+      requestBody:
+        description: B7EnumItem Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7EnumItem_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7EnumItem_Crud'
+        required: true
+      responses:
+        200:
+          description: B7EnumItem created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_enum_item/{id}:
+    put:
+      summary: Update B7EnumItem by ID
+      operationId: updateB7EnumItem
+      requestBody:
+        description: B7EnumItem Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7EnumItem_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7EnumItem_Crud'
+        required: true
+      responses:
+        200:
+          description: B7EnumItem updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7EnumItem by ID
+      operationId: deleteB7EnumItem
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7EnumItem
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7EnumItem deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_table:
+    get:
+      summary: List of B7Table
+      description: returns list of B7Table records. Filtering, paging is optional
+      operationId: listB7Table
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+        - name: id
+          in: query
+          description: 'Filter By Operators: eq'
+          schema:
+            type: string
+        - name: table_name
+          in: query
+          description: 'Filter By Operators: eq,like'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7Table
+      operationId: addB7Table
+      requestBody:
+        description: B7Table Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Table_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Table_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Table created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_table/{id}:
+    put:
+      summary: Update B7Table by ID
+      operationId: updateB7Table
+      requestBody:
+        description: B7Table Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Table_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Table_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Table updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7Table by ID
+      operationId: deleteB7Table
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7Table
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7Table deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_table_relation:
+    get:
+      summary: List of B7TableRelation
+      description: returns list of B7TableRelation records. Filtering, paging is optional
+      operationId: listB7TableRelation
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7TableRelation
+      operationId: addB7TableRelation
+      requestBody:
+        description: B7TableRelation Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7TableRelation_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7TableRelation_Crud'
+        required: true
+      responses:
+        200:
+          description: B7TableRelation created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_table_relation/{id}:
+    put:
+      summary: Update B7TableRelation by ID
+      operationId: updateB7TableRelation
+      requestBody:
+        description: B7TableRelation Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7TableRelation_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7TableRelation_Crud'
+        required: true
+      responses:
+        200:
+          description: B7TableRelation updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7TableRelation by ID
+      operationId: deleteB7TableRelation
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7TableRelation
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7TableRelation deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_query:
+    get:
+      summary: List of B7Query
+      description: returns list of B7Query records. Filtering, paging is optional
+      operationId: listB7Query
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7Query
+      operationId: addB7Query
+      requestBody:
+        description: B7Query Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Query created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_query/{id}:
+    put:
+      summary: Update B7Query by ID
+      operationId: updateB7Query
+      requestBody:
+        description: B7Query Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Query updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7Query by ID
+      operationId: deleteB7Query
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7Query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7Query deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+  /table/b7_table_field:
+    get:
+      summary: List of B7TableField
+      description: returns list of B7TableField records. Filtering, paging is optional
+      operationId: listB7TableField
+      parameters:
+        - name: _fields
+          in: query
+          description: Name of fields separated by comma
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: _sort
+          in: query
+          description: Name of the field to be sorted
+          schema:
+            type: string
+        - name: _dir
+          in: query
+          description: Direction of sorting. ASC or DESC
+          schema:
+            type: string
+        - name: _limit
+          in: query
+          description: Number of maximum records to be retrieved
+          schema:
+            type: integer
+        - name: _offset
+          in: query
+          description: Start position of the records
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7TableField
+      operationId: addB7TableField
+      requestBody:
+        description: B7TableField Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NewB7TableField'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewB7TableField'
+        required: true
+      responses:
+        200:
+          description: B7TableField created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_table_field/{id}:
+    put:
+      summary: Update B7TableField by ID
+      operationId: updateB7TableField
+      requestBody:
+        description: B7TableField Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdateB7TableField'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateB7TableField'
+        required: true
+      responses:
+        200:
+          description: B7TableField updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7TableField by ID
+      operationId: deleteB7TableField
+      parameters:
+        - name: id
+          in: path
+          description: ID of B7TableField
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: B7TableField deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+components:
+  schemas:
+    ErrorModel:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        data:
+          type: object
+          properties: {}
+    B7Enum:
+      type: object
+      properties:
+        id:
+          type: string
+        enum_name:
+          type: string
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7Enum_Crud:
+      required:
+        - enum_name
+      type: object
+      properties:
+        enum_name:
+          type: string
+    B7QueryParam:
+      type: object
+      properties:
+        id:
+          type: string
+        query_id:
+          type: string
+        param_name:
+          type: string
+        data_type:
+          type: string
+        db_expression:
+          type: string
+        required_flag:
+          type: boolean
+        order_num:
+          type: integer
+          format: int32
+        default_value:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7QueryParam_Crud:
+      required:
+        - data_type
+        - db_expression
+        - order_num
+        - param_name
+        - query_id
+        - required_flag
+      type: object
+      properties:
+        query_id:
+          type: string
+        param_name:
+          type: string
+        data_type:
+          type: string
+        db_expression:
+          type: string
+        required_flag:
+          type: boolean
+        order_num:
+          type: integer
+          format: int32
+        default_value:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+    B7QueryField:
+      type: object
+      properties:
+        id:
+          type: string
+        query_id:
+          type: string
+        field_name:
+          type: string
+        main_table_field_id:
+          type: string
+        field_description:
+          type: string
+        data_type:
+          type: string
+        filter_operator_types:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        post_process_type:
+          type: string
+        post_process_object_id:
+          type: string
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7QueryField_Crud:
+      required:
+        - acl_view_flag
+        - data_type
+        - field_name
+        - order_num
+        - query_id
+      type: object
+      properties:
+        query_id:
+          type: string
+        field_name:
+          type: string
+        main_table_field_id:
+          type: string
+        field_description:
+          type: string
+        data_type:
+          type: string
+        filter_operator_types:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        post_process_type:
+          type: string
+        post_process_object_id:
+          type: string
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+    B7FuncParam:
+      type: object
+      properties:
+        id:
+          type: string
+        func_id:
+          type: string
+        param_name:
+          type: string
+        data_type:
+          type: string
+        param_description:
+          type: string
+        required_flag:
+          type: boolean
+        order_num:
+          type: integer
+          format: int32
+        source_type:
+          type: string
+        default_value:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7FuncParam_Crud:
+      required:
+        - data_type
+        - func_id
+        - order_num
+        - param_name
+        - required_flag
+        - source_type
+      type: object
+      properties:
+        func_id:
+          type: string
+        param_name:
+          type: string
+        data_type:
+          type: string
+        param_description:
+          type: string
+        required_flag:
+          type: boolean
+        order_num:
+          type: integer
+          format: int32
+        source_type:
+          type: string
+        default_value:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+    B7Func:
+      type: object
+      properties:
+        id:
+          type: string
+        func_name:
+          type: string
+        folder_id:
+          type: string
+        func_description:
+          type: string
+        func_code:
+          type: string
+        acl_nosession_flag:
+          type: boolean
+        acl_exec_flag:
+          type: boolean
+        acl_exec_roles:
+          type: string
+        log_level_type:
+          type: string
+        timeout:
+          type: integer
+          format: int32
+        func_out_type:
+          type: string
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7Func_Crud:
+      required:
+        - acl_exec_flag
+        - acl_nosession_flag
+        - func_name
+        - func_out_type
+        - timeout
+      type: object
+      properties:
+        func_name:
+          type: string
+        folder_id:
+          type: string
+        func_description:
+          type: string
+        func_code:
+          type: string
+        acl_nosession_flag:
+          type: boolean
+        acl_exec_flag:
+          type: boolean
+        acl_exec_roles:
+          type: string
+        log_level_type:
+          type: string
+        timeout:
+          type: integer
+          format: int32
+        func_out_type:
+          type: string
+    B7EnumItem:
+      type: object
+      properties:
+        id:
+          type: string
+        enum_id:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        item_value:
+          type: string
+        item_text:
+          type: string
+        active_flag:
+          type: boolean
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7EnumItem_Crud:
+      required:
+        - active_flag
+        - enum_id
+        - item_text
+        - item_value
+        - order_num
+      type: object
+      properties:
+        enum_id:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        item_value:
+          type: string
+        item_text:
+          type: string
+        active_flag:
+          type: boolean
+    B7Table:
+      type: object
+      properties:
+        id:
+          type: string
+        table_name:
+          type: string
+        folder_id:
+          type: string
+        table_description:
+          type: string
+        record_description_sql:
+          type: string
+        filter_flag:
+          type: boolean
+        log_crud_flag:
+          type: boolean
+        text_search_flag:
+          type: boolean
+        text_search_order_num:
+          type: integer
+          format: int32
+        acl_source_types:
+          type: string
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        acl_view_user_fields:
+          type: string
+        acl_insert_flag:
+          type: boolean
+        acl_insert_roles:
+          type: string
+        acl_update_flag:
+          type: boolean
+        acl_update_roles:
+          type: string
+        acl_update_user_fields:
+          type: string
+        acl_delete_flag:
+          type: boolean
+        acl_delete_roles:
+          type: string
+        acl_delete_user_fields:
+          type: string
+        vcs_flag:
+          type: boolean
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7Table_Crud:
+      required:
+        - acl_delete_flag
+        - acl_insert_flag
+        - acl_update_flag
+        - acl_view_flag
+        - filter_flag
+        - log_crud_flag
+        - table_name
+        - text_search_flag
+        - text_search_order_num
+        - vcs_flag
+      type: object
+      properties:
+        table_name:
+          type: string
+        folder_id:
+          type: string
+        table_description:
+          type: string
+        record_description_sql:
+          type: string
+        filter_flag:
+          type: boolean
+        log_crud_flag:
+          type: boolean
+        text_search_flag:
+          type: boolean
+        text_search_order_num:
+          type: integer
+          format: int32
+        acl_source_types:
+          type: string
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        acl_view_user_fields:
+          type: string
+        acl_insert_flag:
+          type: boolean
+        acl_insert_roles:
+          type: string
+        acl_update_flag:
+          type: boolean
+        acl_update_roles:
+          type: string
+        acl_update_user_fields:
+          type: string
+        acl_delete_flag:
+          type: boolean
+        acl_delete_roles:
+          type: string
+        acl_delete_user_fields:
+          type: string
+        vcs_flag:
+          type: boolean
+    B7TableRelation:
+      type: object
+      properties:
+        id:
+          type: string
+        locale_msg_key:
+          type: string
+        relation_type:
+          type: string
+        table_id:
+          type: string
+        table_field_id:
+          type: string
+        related_table_id:
+          type: string
+        related_table_field_id:
+          type: string
+        related_static_table_field_id:
+          type: string
+        related_static_table_field_val:
+          type: string
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7TableRelation_Crud:
+      required:
+        - locale_msg_key
+        - related_table_field_id
+        - related_table_id
+        - relation_type
+        - table_field_id
+        - table_id
+      type: object
+      properties:
+        locale_msg_key:
+          type: string
+        relation_type:
+          type: string
+        table_id:
+          type: string
+        table_field_id:
+          type: string
+        related_table_id:
+          type: string
+        related_table_field_id:
+          type: string
+        related_static_table_field_id:
+          type: string
+        related_static_table_field_val:
+          type: string
+    B7Query:
+      type: object
+      properties:
+        id:
+          type: string
+        query_name:
+          type: string
+        folder_id:
+          type: string
+        query_description:
+          type: string
+        main_table_id:
+          type: string
+        query_code:
+          type: string
+        log_level_type:
+          type: string
+        show_parent_record_flag:
+          type: boolean
+        acl_nosession_flag:
+          type: boolean
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    B7Query_Crud:
+      required:
+        - acl_nosession_flag
+        - acl_view_flag
+        - query_code
+        - query_name
+        - show_parent_record_flag
+      type: object
+      properties:
+        query_name:
+          type: string
+        folder_id:
+          type: string
+        query_description:
+          type: string
+        main_table_id:
+          type: string
+        query_code:
+          type: string
+        log_level_type:
+          type: string
+        show_parent_record_flag:
+          type: boolean
+        acl_nosession_flag:
+          type: boolean
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+    B7TableField:
+      type: object
+      properties:
+        id:
+          type: string
+        table_id:
+          type: string
+        field_name:
+          type: string
+        field_description:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        data_type:
+          type: string
+          enum:
+            - string
+            - int64
+            - number
+            - date
+            - date-time
+            - boolean
+            - int32
+        required_flag:
+          type: boolean
+        pk_flag:
+          type: boolean
+        insert_flag:
+          type: boolean
+        update_flag:
+          type: boolean
+        source_type:
+          type: string
+        default_value:
+          type: string
+        text_search_flag:
+          type: boolean
+        filter_operator_types:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        acl_view_user_fields:
+          type: string
+        acl_insert_flag:
+          type: boolean
+        acl_insert_roles:
+          type: string
+        acl_update_flag:
+          type: boolean
+        acl_update_roles:
+          type: string
+        acl_update_user_fields:
+          type: string
+        acl_mask_flag:
+          type: boolean
+        acl_mask_roles:
+          type: string
+        acl_mask_user_fields:
+          type: string
+        related_session_field:
+          type: string
+        encryption_type:
+          type: string
+        ui_control_type:
+          type: string
+        ui_select_source_type:
+          type: string
+        ui_select_source_object_id:
+          type: string
+        project_id:
+          type: string
+        oproject_id:
+          type: string
+        created_by:
+          type: integer
+          format: int32
+        created_at:
+          type: string
+          format: date-time
+        updated_by:
+          type: integer
+          format: int32
+        updated_at:
+          type: string
+          format: date-time
+    NewB7TableField:
+      required:
+        - acl_insert_flag
+        - acl_mask_flag
+        - acl_update_flag
+        - acl_view_flag
+        - data_type
+        - field_name
+        - insert_flag
+        - order_num
+        - pk_flag
+        - required_flag
+        - source_type
+        - table_id
+        - text_search_flag
+        - update_flag
+      type: object
+      properties:
+        table_id:
+          type: string
+        field_name:
+          type: string
+        field_description:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        data_type:
+          type: string
+          enum:
+            - string
+            - int64
+            - number
+            - date
+            - date-time
+            - boolean
+            - int32
+        required_flag:
+          type: boolean
+        pk_flag:
+          type: boolean
+        insert_flag:
+          type: boolean
+        update_flag:
+          type: boolean
+        source_type:
+          type: string
+        default_value:
+          type: string
+        text_search_flag:
+          type: boolean
+        filter_operator_types:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        acl_view_user_fields:
+          type: string
+        acl_insert_flag:
+          type: boolean
+        acl_insert_roles:
+          type: string
+        acl_update_flag:
+          type: boolean
+        acl_update_roles:
+          type: string
+        acl_update_user_fields:
+          type: string
+        acl_mask_flag:
+          type: boolean
+        acl_mask_roles:
+          type: string
+        acl_mask_user_fields:
+          type: string
+        related_session_field:
+          type: string
+        encryption_type:
+          type: string
+        ui_control_type:
+          type: string
+        ui_select_source_type:
+          type: string
+        ui_select_source_object_id:
+          type: string
+    UpdateB7TableField:
+      required:
+        - acl_insert_flag
+        - acl_mask_flag
+        - acl_update_flag
+        - acl_view_flag
+        - data_type
+        - field_name
+        - insert_flag
+        - order_num
+        - pk_flag
+        - required_flag
+        - source_type
+        - text_search_flag
+        - update_flag
+      type: object
+      properties:
+        field_name:
+          type: string
+        field_description:
+          type: string
+        order_num:
+          type: integer
+          format: int32
+        data_type:
+          type: string
+          enum:
+            - string
+            - int64
+            - number
+            - date
+            - date-time
+            - boolean
+            - int32
+        required_flag:
+          type: boolean
+        pk_flag:
+          type: boolean
+        insert_flag:
+          type: boolean
+        update_flag:
+          type: boolean
+        source_type:
+          type: string
+        default_value:
+          type: string
+        text_search_flag:
+          type: boolean
+        filter_operator_types:
+          type: string
+        min_length:
+          type: integer
+          format: int32
+        max_length:
+          type: integer
+          format: int32
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string
+        acl_view_user_fields:
+          type: string
+        acl_insert_flag:
+          type: boolean
+        acl_insert_roles:
+          type: string
+        acl_update_flag:
+          type: boolean
+        acl_update_roles:
+          type: string
+        acl_update_user_fields:
+          type: string
+        acl_mask_flag:
+          type: boolean
+        acl_mask_roles:
+          type: string
+        acl_mask_user_fields:
+          type: string
+        related_session_field:
+          type: string
+        encryption_type:
+          type: string
+        ui_control_type:
+          type: string
+        ui_select_source_type:
+          type: string
+        ui_select_source_object_id:
+          type: string
