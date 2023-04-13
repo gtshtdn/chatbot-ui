@@ -16,145 +16,169 @@ export const DEFAULT_SYSTEM_PROMPT =
   - url: http://localhost:5124/api/00001337-b37a-4ae2-a221-2470b63db374
   tags: []
   paths:
-    /table/b7_enum:
-      get:
-        summary: List of B7Enum
-        description: returns list of B7Enum records. Filtering, paging is optional
-        operationId: listB7Enum
-        parameters:
-        - name: _fields
-          in: query
-          description: Name of fields separated by comma
-          style: form
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
-        - name: _sort
-          in: query
-          description: Name of the field to be sorted
-          schema:
+  /table/b7_query:
+    get:
+      summary: List of B7Query
+      description: returns list of B7Query records. Filtering, paging is optional
+      operationId: listB7Query
+      parameters:
+      - name: _fields
+        in: query
+        description: Name of fields separated by comma
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
             type: string
-        - name: _dir
-          in: query
-          description: Direction of sorting. ASC or DESC
-          schema:
-            type: string
-        - name: _limit
-          in: query
-          description: Number of maximum records to be retrieved
-          schema:
-            type: integer
-        - name: _offset
-          in: query
-          description: Start position of the records
-          schema:
-            type: integer
-        - name: enum_name
-          in: query
-          description: 'Filter By Operators: eq,like'
-          schema:
-            type: string
-        responses:
-          200:
-            description: Successful Operation
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        type: object
-          400:
-            description: Bad Request
-            content: {}
-      post:
-        summary: Add a new B7Enum
-        operationId: addB7Enum
-        requestBody:
-          description: B7Enum Table
+      - name: _sort
+        in: query
+        description: Name of the field to be sorted
+        schema:
+          type: string
+      - name: _dir
+        in: query
+        description: Direction of sorting. ASC or DESC
+        schema:
+          type: string
+      - name: _limit
+        in: query
+        description: Number of maximum records to be retrieved
+        schema:
+          type: integer
+      - name: _offset
+        in: query
+        description: Start position of the records
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Successful Operation
           content:
-            application/x-www-form-urlencoded:
-              schema:
-                $ref: '#/components/schemas/B7Enum_Crud'
             application/json:
               schema:
-                $ref: '#/components/schemas/B7Enum_Crud'
-          required: true
-        responses:
-          200:
-            description: B7Enum created
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    outs:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
                       type: object
-                      properties: {}
-                    msgs:
-                      type: array
-          400:
-            description: Bad Request
-            content: {}
-        x-codegen-request-body-name: body
-    /table/b7_enum/{id}:
-      put:
-        summary: Update B7Enum by ID
-        operationId: updateB7Enum
-        requestBody:
-          description: B7Enum Table
+        400:
+          description: Bad Request
+          content: {}
+    post:
+      summary: Add a new B7Query
+      operationId: addB7Query
+      requestBody:
+        description: B7Query Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Query created
           content:
-            application/x-www-form-urlencoded:
-              schema:
-                $ref: '#/components/schemas/B7Enum_Crud'
             application/json:
               schema:
-                $ref: '#/components/schemas/B7Enum_Crud'
-          required: true
-        responses:
-          200:
-            description: B7Enum updated
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    outs:
-                      type: object
-                      properties: {}
-                    msgs:
-                      type: array
-          400:
-            description: Bad Request
-            content: {}
-        x-codegen-request-body-name: body
-      delete:
-        summary: Deletes a B7Enum by ID
-        operationId: deleteB7Enum
-        parameters:
-        - name: id
-          in: path
-          description: ID of B7Enum
-          required: true
-          schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+  /table/b7_query/{id}:
+    get:
+      summary: Find B7Query by ID
+      operationId: getB7QueryById
+      parameters:
+      - name: id
+        in: path
+        description: ID of B7Query
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Name of fields separated by comma
+        style: form
+        explode: false
+        schema:
+          type: array
+          items:
             type: string
-        responses:
-          200:
-            description: B7Enum deleted
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    msgs:
-                      type: array
-          400:
-            description: Bad Request
-            content: {}
+      responses:
+        200:
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/B7Query'
+        400:
+          description: Bad Request
+          content: {}
+    put:
+      summary: Update B7Query by ID
+      operationId: updateB7Query
+      requestBody:
+        description: B7Query Table
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/B7Query_Crud'
+        required: true
+      responses:
+        200:
+          description: B7Query updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  outs:
+                    type: object
+                    properties: {}
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      summary: Deletes a B7Query by ID
+      operationId: deleteB7Query
+      parameters:
+      - name: id
+        in: path
+        description: ID of B7Query
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: B7Query deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msgs:
+                    type: array
+        400:
+          description: Bad Request
+          content: {}
   components:
   schemas:
     ErrorModel:
@@ -171,12 +195,30 @@ export const DEFAULT_SYSTEM_PROMPT =
         data:
           type: object
           properties: {}
-    B7Enum:
+    B7Query:
       type: object
       properties:
         id:
           type: string
-        enum_name:
+        query_name:
+          type: string
+        folder_id:
+          type: string
+        query_description:
+          type: string
+        main_table_id:
+          type: string
+        query_code:
+          type: string
+        log_level_type:
+          type: string
+        show_parent_record_flag:
+          type: boolean
+        acl_nosession_flag:
+          type: boolean
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
           type: string
         project_id:
           type: string
@@ -194,13 +236,35 @@ export const DEFAULT_SYSTEM_PROMPT =
         updated_at:
           type: string
           format: date-time
-    B7Enum_Crud:
+    B7Query_Crud:
       required:
-      - enum_name
+      - acl_nosession_flag
+      - acl_view_flag
+      - query_code
+      - query_name
+      - show_parent_record_flag
       type: object
       properties:
-        enum_name:
-          type: string        
+        query_name:
+          type: string
+        folder_id:
+          type: string
+        query_description:
+          type: string
+        main_table_id:
+          type: string
+        query_code:
+          type: string
+        log_level_type:
+          type: string
+        show_parent_record_flag:
+          type: boolean
+        acl_nosession_flag:
+          type: boolean
+        acl_view_flag:
+          type: boolean
+        acl_view_roles:
+          type: string       
             `;
 
 export const OPENAI_API_HOST =

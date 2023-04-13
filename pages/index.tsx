@@ -38,6 +38,14 @@ import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 
+import { Configuration, OpenAIApi } from 'openai';
+import { createClient } from '@supabase/supabase-js';
+
+export const supabaseAdmin = createClient(
+  'https://lwwlmsyebbuqfcdwhxcp.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3d2xtc3llYmJ1cWZjZHdoeGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzY2NjEyMzIsImV4cCI6MTk5MjIzNzIzMn0.LcrD5lOeekQQbfFRwHLBHjJjpmh0yoJ9_JmgBVdoghE',
+);
+
 interface HomeProps {
   serverSideApiKeyIsSet: boolean;
   serverSidePluginKeysSet: boolean;
@@ -79,6 +87,11 @@ const Home: React.FC<HomeProps> = ({
 
   const stopConversationRef = useRef<boolean>(false);
 
+  const configuration = new Configuration({
+    apiKey: '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',
+  });
+  const openAi = new OpenAIApi(configuration);
+
   // FETCH RESPONSE ----------------------------------------------
 
   const handleSend = async (
@@ -88,6 +101,38 @@ const Home: React.FC<HomeProps> = ({
   ) => {
     if (selectedConversation) {
       let updatedConversation: Conversation;
+      // debugger;
+
+      const configuration = new Configuration({
+        apiKey: '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',
+      });
+      const openAi = new OpenAIApi(configuration);
+
+      // console.log(input);
+      const embeddingResponse = await openAi.createEmbedding({
+        model: 'text-embedding-ada-002',
+        // @ts-ignore
+        input: message.content,
+      });
+
+      // @ts-ignore
+      const [{ embedding }] = embeddingResponse.data.data;
+
+      const { data: metadata_response, error } = await supabaseAdmin.rpc(
+        'metadata_search',
+        {
+          query_embedding: embedding,
+          similarity_threshold: 0.8,
+          match_count: 3,
+        },
+      );
+
+      console.log(metadata_response);
+
+      // message.content =
+      //   message.content +
+      //   ' --- And here is related metadata: ' +
+      //   JSON.stringify(metadata_response[0].metadata);
 
       if (deleteCount) {
         const updatedMessages = [...selectedConversation.messages];
@@ -106,13 +151,28 @@ const Home: React.FC<HomeProps> = ({
         };
       }
 
+      let hiddenContent = message.content;
+      const b7_metadata = metadata_response[0]?.metadata;
+
+      if (b7_metadata) {
+        hiddenContent =
+          message.content +
+          ' --- And here is related metadata: ' +
+          JSON.stringify(b7_metadata);
+      }
+
+      const hiddenSystemMessages: any[] = [
+        ...selectedConversation.messages,
+        { ...message, content: hiddenContent },
+      ];
+
       setSelectedConversation(updatedConversation);
       setLoading(true);
       setMessageIsStreaming(true);
 
       const chatBody: ChatBody = {
         model: updatedConversation.model,
-        messages: updatedConversation.messages,
+        messages: hiddenSystemMessages, // updatedConversation.messages
         key: apiKey,
         prompt: updatedConversation.prompt,
       };
@@ -191,68 +251,127 @@ const Home: React.FC<HomeProps> = ({
 
           text += chunkValue;
 
-          if (isFirst) {
-            isFirst = false;
-            const updatedMessages: Message[] = [
-              ...updatedConversation.messages,
-              { role: 'assistant', content: chunkValue },
-            ];
+          // if (isFirst) {
+          //   isFirst = false;
+          //   const updatedMessages: Message[] = [
+          //     ...updatedConversation.messages,
+          //     { role: 'assistant', content: chunkValue },
+          //   ];
 
-            updatedConversation = {
-              ...updatedConversation,
-              messages: updatedMessages,
-            };
+          //   updatedConversation = {
+          //     ...updatedConversation,
+          //     messages: updatedMessages,
+          //   };
 
-            setSelectedConversation(updatedConversation);
-          } else {
-            const updatedMessages: Message[] = updatedConversation.messages.map(
-              (message, index) => {
-                if (index === updatedConversation.messages.length - 1) {
-                  return {
-                    ...message,
-                    content: text,
-                  };
-                }
+          //   setSelectedConversation(updatedConversation);
+          // } else {
+          //   const updatedMessages: Message[] = updatedConversation.messages.map(
+          //     (message, index) => {
+          //       if (index === updatedConversation.messages.length - 1) {
+          //         return {
+          //           ...message,
+          //           content: text,
+          //         };
+          //       }
 
-                return message;
-              },
-            );
+          //       return message;
+          //     },
+          //   );
 
-            updatedConversation = {
-              ...updatedConversation,
-              messages: updatedMessages,
-            };
+          //   updatedConversation = {
+          //     ...updatedConversation,
+          //     messages: updatedMessages,
+          //   };
 
-            setSelectedConversation(updatedConversation);
-          }
+          //   setSelectedConversation(updatedConversation);
+          // }
         }
 
         // debugger;
-        // const req = JSON.parse(text);
+        const req = JSON.parse(text);
+        // debugger
 
-        // const res = await fetch(req.url, {
-        //   method: req.method,
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: req.body ? JSON.stringify(req.body) : null,
-        // });
+        let endpoint_url = req.url;
+        if (
+          endpoint_url.indexOf('00001337-b37a-4ae2-a221-2470b63db374') === -1
+        ) {
+          endpoint_url =
+            'http://localhost:5124/api/00001337-b37a-4ae2-a221-2470b63db374' +
+            req.url;
+        }
 
-        // const b7_response = await res.json();
+        const res = await fetch(endpoint_url, {
+          method: req.method,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: req.body ? JSON.stringify(req.body) : null,
+        });
+
+        const b7_response = await res.json();
+
+        const b7_answer = JSON.stringify(b7_response?.data);
+
+        const systemMessage = [
+          ...updatedConversation.messages,
+          { role: 'assistant', content: JSON.stringify(req) },
+          {
+            role: 'system',
+            content:
+              ' --- Okay, here is the result of fetch call with that enpoint: ' +
+              b7_answer +
+              ' --- Tell user this result in a better format. Convert it to markdown bullet list.  ',
+          },
+        ];
+
+        const systemChatBody: ChatBody = {
+          model: updatedConversation.model,
+          // @ts-ignore
+          messages: systemMessage,
+          key: apiKey,
+          prompt: updatedConversation.prompt,
+        };
 
         // console.log('b7_response ', b7_response);
 
-        // const updatedMessages: Message[] = [
-        //   ...updatedConversation.messages,
-        //   { role: 'assistant', content: JSON.stringify(b7_response?.data) },
-        // ];
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          signal: controller.signal,
+          body: JSON.stringify(systemChatBody),
+        });
 
-        // updatedConversation = {
-        //   ...updatedConversation,
-        //   messages: updatedMessages,
-        // };
+        // console.log(response)
 
-        // setSelectedConversation(updatedConversation);
+        const data2 = response.body;
+
+        const reader2 = data2!.getReader();
+        const decoder2 = new TextDecoder();
+        let done2 = false;
+        let isFirst2 = true;
+        let text2 = '';
+
+        while (!done2) {
+          const { value, done: doneReading } = await reader2.read();
+          done2 = doneReading;
+          const chunkValue = decoder2.decode(value);
+
+          text2 += chunkValue;
+        }
+
+        const updatedMessages: Message[] = [
+          ...updatedConversation.messages,
+          { role: 'assistant', content: text2 },
+        ];
+
+        updatedConversation = {
+          ...updatedConversation,
+          messages: updatedMessages,
+        };
+
+        setSelectedConversation(updatedConversation);
 
         saveConversation(updatedConversation);
 
